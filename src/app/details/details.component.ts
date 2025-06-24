@@ -52,9 +52,9 @@ export class DetailsComponent {
   constructor() {
     const housingLocationId = Number(this.route.snapshot.
       params['id']);
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
-
-    // Alternatively, you can use the observable approach:
+     this.housingService.getHousingLocationById(housingLocationId).then(housingLocation => {
+      this.housingLocation = housingLocation;
+    });
   }
   submitApplication() {
     this.housingService.submitApplication(
